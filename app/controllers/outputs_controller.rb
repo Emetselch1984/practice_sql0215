@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OutputsController < ApplicationController
   def index
     sql = <<~SQL
@@ -15,6 +17,9 @@ class OutputsController < ApplicationController
     sql5 = <<~SQL
       SELECT MAX(price) FROM products;
     SQL
+    sql6 = <<~SQL
+      select count(distinct user_id) from access_logs where request_month = '2017-01-01'
+    SQL
 
     result = Order.connection.select_all(sql).to_a
     @sum = result[0]['SUM(amount)']
@@ -27,5 +32,7 @@ class OutputsController < ApplicationController
     result5 = Product.connection.select_all(sql5).to_a
     @maxPrice = result5[0]['MAX(price)']
     @userCount = User.all.size
+    result6 = AccessLog.connection.select_all(sql6).to_a
+    @accesslog = result6[0]['count(distinct user_id)']
   end
 end

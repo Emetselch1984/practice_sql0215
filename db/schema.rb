@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_045225) do
+ActiveRecord::Schema.define(version: 2021_02_16_062819) do
+
+  create_table "access_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.date "request_month", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["request_month"], name: "index_access_logs_on_request_month"
+    t.index ["user_id", "request_month"], name: "index_access_logs_on_user_id_and_request_month"
+    t.index ["user_id"], name: "index_access_logs_on_user_id"
+  end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "amount", null: false
@@ -26,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_045225) do
     t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_products_on_name"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -40,5 +51,6 @@ ActiveRecord::Schema.define(version: 2021_02_16_045225) do
     t.index ["last_name", "first_name"], name: "index_users_on_last_name_and_first_name"
   end
 
+  add_foreign_key "access_logs", "users"
   add_foreign_key "orders", "users"
 end
