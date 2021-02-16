@@ -15,3 +15,10 @@ end
       user: User.offset(rand(User.count)).first
   )
 end
+
+1000.times do |n|
+  Product.create(
+      name:"商品#{n}",
+      price:sprintf("%d00",rand(10..90))
+  )
+end
