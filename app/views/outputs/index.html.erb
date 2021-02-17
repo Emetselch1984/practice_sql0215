@@ -54,4 +54,13 @@
     </div>
   </div>
 
+    <% @prefectures.each do |a|%>
+    <div id="container">
+      <div class="item">
+        <h2> 都道府県id: <%= a["count(*)"] %></h2>
+        <p><%= a["prefecture_id"] %></p>
+      </div>
+    </div>
+    <% end %>
+
 </section>
