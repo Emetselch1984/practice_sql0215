@@ -53,7 +53,6 @@
       <p><%= @sum2 %></p>
     </div>
   </div>
-
     <% @prefectures.each do |a|%>
     <div id="container">
       <div class="item">
@@ -62,5 +61,12 @@
       </div>
     </div>
     <% end %>
-
+  <% @highAccessLog.each do |a|%>
+    <div id="container">
+      <div class="item">
+        <h2><%= a["request_month"] %></h2>
+        <p><%= a["count(distinct user_id)"] %></p>
+      </div>
+    </div>
+  <% end %>
 </section>

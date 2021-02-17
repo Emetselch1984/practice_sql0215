@@ -17,5 +17,6 @@ class OutputsController < ApplicationController
     result6 = AccessLog.connection.select_all(CountUser).to_a
     @accesslog = result6[0]['count(distinct user_id)']
     @prefectures = User.connection.select_all(PrefectureCount).to_a
+    @highAccessLog = AccessLog.connection.select_all(HighRequestLogMonth).to_a
   end
 end

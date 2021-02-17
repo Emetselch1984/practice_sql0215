@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 gender = [1.2]
-500.times do |n|
+1000.times do |n|
   user = User.create!(first_name: Faker::Name.first_name,
                       last_name: Faker::Name.last_name,
                       email: Faker::Internet.email,
