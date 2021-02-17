@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class OutputsController < ApplicationController
-    include Sql
+  include Sql
   def index
-
     result = Order.connection.select_all(SumSql).to_a
     @sum = result[0]['SUM(amount)']
     result2 = Order.connection.select_all(SumSql2).to_a
@@ -17,6 +16,6 @@ class OutputsController < ApplicationController
     @userCount = User.all.size
     result6 = AccessLog.connection.select_all(CountUser).to_a
     @accesslog = result6[0]['count(distinct user_id)']
-      @prefectures = User.connection.select_all(PrefectureCount).to_a
+    @prefectures = User.connection.select_all(PrefectureCount).to_a
   end
 end
