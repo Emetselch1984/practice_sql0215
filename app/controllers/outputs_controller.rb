@@ -3,8 +3,8 @@
 class OutputsController < ApplicationController
   include Sql
   def index
-    result = Order.connection.select_all(SumSql).to_a
-    @sum = result[0]['SUM(amount)']
+    result = Order.connection.select_all(SumSql)[0]
+    @sum = result
     result2 = Order.connection.select_all(SumSql2).to_a
     @sum2 = result2[0]['SUM(amount)']
     result3 = Product.connection.select_all(AvgSql).to_a
@@ -16,7 +16,7 @@ class OutputsController < ApplicationController
     @userCount = User.all.size
     result6 = AccessLog.connection.select_all(CountUser).to_a
     @accesslog = result6[0]['count(distinct user_id)']
-    @prefectures = User.connection.select_all(PrefectureCount).to_a
+    @prefectures = User.connection.select_all(PrefectureCount)
     @highAccessLog = AccessLog.connection.select_all(HighRequestLogMonth).to_a
   end
 end

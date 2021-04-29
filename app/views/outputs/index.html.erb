@@ -53,20 +53,52 @@
       <p><%= @sum2 %></p>
     </div>
   </div>
-    <% @prefectures.each do |a|%>
-    <div id="container">
-      <div class="item">
-        <h2> 都道府県id: <%= a["count(*)"] %></h2>
-        <p><%= a["prefecture_id"] %></p>
+  <div class="parent">
+    <div class="child v1">child</div>
+    <div class="child v2">child 2</div>
+    <div class="child v3">child 3</div>
+  </div>
+  <div id="parent">
+    <div class="wrap">
+      <% @prefectures.each do |p| %>
+        <div class="wrap">
+          <div class="item">
+            <%= p["prefecture_id"] %>
+          </div>
+          <div class="item_b">
+            <%= p["count(*)"] %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= @prefectures %>
+  <% @prefectures.each do |p| %>
+    <div id="w">
+      <div class="i1">
+        <%= p p["prefecture_id"] %>
+      </div>
+      <div class="i2">
+        <%= p p["count(*)"] %>
       </div>
     </div>
-    <% end %>
-  <% @highAccessLog.each do |a|%>
-    <div id="container">
-      <div class="item">
-        <h2><%= a["request_month"] %></h2>
-        <p><%= a["count(distinct user_id)"] %></p>
-      </div>
-    </div>
+    <%= p p["prefecture_id"] %>
+    <%= p p["count(*)"] %>
   <% end %>
+    <%# @prefectures.each do |a|%>
+<!--    <div id="container">-->
+<!--      <div class="item">-->
+<!--        <h2> 都道府県id: <%#= a["count(*)"] %></h2>-->
+<!--        <p><%#= a["prefecture_id"] %></p>-->
+<!--      </div>-->
+<!--    </div>-->
+    <%# end %>
+  <%# @highAccessLog.each do |a|%>
+<!--    <div id="container">-->
+<!--      <div class="item">-->
+<!--        <h2><%#= a["request_month"] %></h2>-->
+<!--        <p><%#= a["count(distinct user_id)"] %></p>-->
+<!--      </div>-->
+<!--    </div>-->
+  <%# end %>
 </section>
