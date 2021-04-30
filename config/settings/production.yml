@@ -1,0 +1,5 @@
+production_db:
+  database: <%= Rails.application.credentials.production_db[:database] %>
+  username: <%= Rails.application.credentials.production_db[:username] %>
+  password: <%= Rails.application.credentials.production_db[:password] %>
+  socket: <%= Rails.application.credentials.production_db[:socket] %>

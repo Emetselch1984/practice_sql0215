@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: practice_sql0215_production
-  username: practice_sql0215
-  password: <%= ENV['PRACTICE_SQL0215_DATABASE_PASSWORD'] %>
+  database: <%= Settings.dig(:production_db,:database) %>
+  username: <%= Settings.dig(:production_db,:username) %>
+  password: <%= Settings.dig(:production_db,:password) %>
+  soket: /var/lib/mysql/mysql.sock
