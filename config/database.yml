@@ -51,7 +51,7 @@ test:
 #
 production:
   <<: *default
-  database: <%= Rails.application.credentials.production_db[:database] %>
-  username: <%= Rails.application.credentials.production_db[:username] %>
-  password: <%= Rails.application.credentials.production_db[:password] %>
-  soket: /var/lib/mysql/mysql.sock
+  database: <%= Settings.dig(:production_db,:database) %>
+  username: <%= Settings.dig(:production_db,:username) %>
+  password: <%= Settings.dig(:production_db,:password) %>
+  soket: <%= Settings.dig(:production_db,:soket) %>
